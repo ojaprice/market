@@ -30,11 +30,16 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
+    'crispy_forms',
+    'crispy_bootstrap4',
     # created_app  
     "users",
     "store", 
 ]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -120,3 +125,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+LOGIN_REDIRECT_URL = '/store'  # Redirect after successful login
+LOGOUT_REDIRECT_URL = '/login'  # Redirect after logout
