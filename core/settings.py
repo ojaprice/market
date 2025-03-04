@@ -21,7 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 
+SECRET_KEY = env("SECRET_KEY")
+
+
 if ENVIRONMENT == "development":
     DEBUG = True
 else:
@@ -59,6 +61,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -142,6 +146,9 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+# to collectstatic files 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files 
 # Define the base URL for serving media files
