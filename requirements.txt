@@ -6,7 +6,9 @@ django-crispy-forms==2.3
 mysql-connector-python==9.2.0
 mysqlclient==2.2.7
 pillow==11.1.0
+psycopg2==2.9.9
 python-environ==0.4.54
 sqlparse==0.5.3
 typing_extensions==4.12.2
 tzdata==2025.1
+whitenoise==6.9.0
