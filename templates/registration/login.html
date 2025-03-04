@@ -1,23 +1,16 @@
-{% extends 'base.html' %} {% block title %} Login {% endblock %} 
+{% extends 'assets/base.html' %} {% block title %} Login {% endblock %} 
 {% block content %} {% load crispy_forms_tags %}
 <div class="container mt-5 d-flex justify-content-center">
   <form action="" method="post" class="w-50">
     <h2 class="mb-4">Login User</h2>
     {% csrf_token %}
     <div class="mb-3">{{ form|crispy }}</div>
-    {% comment %} <div class="mb-3">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" class="form-control" required>
-    </div>
-    <div class="mb-3">
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" class="form-control" required>
-    </div> {% endcomment %}
+    
     <p class="mb-3">
-      Don't have an account? Create one <a href="/sign-up">Here</a>
+      Don't have an account? Create one <a href="{% url 'register' %}">Here</a>
     </p>
-    <p class="mb-3"><a href="#">Reset Password</a></p>
-    <button type="submit" class="btn btn-danger">Login</button>
+    <p class="mb-3"><a href="{% url 'password_reset' %}">Reset Password</a></p>
+    <button type="submit" class="btn btn-dark">Login</button>
   </form>
 </div>
 {% endblock %}

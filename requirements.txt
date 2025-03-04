@@ -1,9 +1,12 @@
 asgiref==3.8.1
-backports.zoneinfo==0.2.1
 crispy-bootstrap4==2024.10
-Django==4.2.16
+dj-database-url==2.3.0
+Django==5.1.6
 django-crispy-forms==2.3
-pillow==10.4.0
-sqlparse==0.5.1
+mysql-connector-python==9.2.0
+mysqlclient==2.2.7
+pillow==11.1.0
+python-environ==0.4.54
+sqlparse==0.5.3
 typing_extensions==4.12.2
-tzdata==2024.2
+tzdata==2025.1

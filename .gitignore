@@ -1,0 +1,4 @@
+.env
+core/.env
+createdb.py
+virt/

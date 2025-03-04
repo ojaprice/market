@@ -1,10 +1,13 @@
+// Get add to cart button using class name
 const updateBtns = document.getElementsByClassName('update-cart')
 
 for (let i = 0; i < updateBtns.length; i++){
     updateBtns[i].addEventListener('click', function(){
         let productId = this.dataset.product
         let action = this.dataset.action
+
         console.log('productId:', productId, 'Action', action)
+        
         console.log("User:", user)
         if(user === "AnonymousUser"){
             addCookieItem(productId, action)

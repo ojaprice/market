@@ -1,0 +1,58 @@
+{% load static %}
+<header>
+  <nav class="container navbar navbar-expand-lg navbar-light bg-white">
+      <div class="logo-div">
+          <a class="navbar-brand" href="{% url 'index' %}" style="color:green;">
+              <img src="{% static 'images/ojaprice.png' %}" class="img-logo"/>
+          </a>
+      </div>
+
+      <!-- Navbar Toggle Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto nav-pages">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Food-combo</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Blogs</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Checkout</a>
+              </li>
+
+              {% if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{% url 'logout' %}" class="btn btn-warning">Logout</a>
+                  </li>
+              {% else %}
+                  <li class="nav-item">
+                      <a href="{% url 'login' %}" 
+                      class="btn btn-warning"
+                      >Login</a>
+                  </li>
+              {% endif %}
+          </ul>
+          
+          <div class="cart-div">
+              <a href="{% url 'cart' %}">
+                  <span id="cart-icon" class="cart-i">
+                      <i class="fa-solid fa-cart-plus"></i>
+                  </span>
+              </a>
+              <p id="cart-total" class="cart-d">{{ cartItems }}</p>
+          </div>
+      </div>
+  </nav>
+</header>

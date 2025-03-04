@@ -8,9 +8,9 @@ def cookiesCart(request):
         cart = {}
     print("Cart:", cart)
 
-
     items = [] #to store items for unauthentiated user
     order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+
     cartItems = order['get_cart_items']
 
     for i in cart:
@@ -44,19 +44,36 @@ def cookiesCart(request):
     return {'items':items, 'order':order,  'cartItems': cartItems}
 
 
+#  Handle Missing Customer Objects
 def cartData(request):
     if request.user.is_authenticated:
-        customer = request.user.customer
+        # Check if the user has a customer object, create one if not
+        customer, created = Customer.objects.get_or_create(user=request.user)
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
-    else: #  unauthenticated
+    else:  # unauthenticated
         cookieData = cookiesCart(request)
         cartItems = cookieData['cartItems']
         items = cookieData['items']
         order = cookieData['order']
 
-    return {'items':items, 'order':order,  'cartItems': cartItems}
+    return {'items': items, 'order': order, 'cartItems': cartItems}
+
+
+# def cartData(request):
+#     if request.user.is_authenticated:
+#         customer = request.user.customer
+#         order = Order.objects.get_or_create(customer=customer, complete=False)
+#         items = order.orderitem_set.all()
+#         cartItems = order.get_cart_items
+#     else: #  unauthenticated
+#         cookieData = cookiesCart(request)
+#         cartItems = cookieData['cartItems']
+#         items = cookieData['items']
+#         order = cookieData['order']
+
+#     return {'items':items, 'order':order,  'cartItems': cartItems}
 
 
 def visitorOrder(request, data):
