@@ -37,7 +37,7 @@ def signup_page(request):
 
             # Send email
             subject = "Verify Your Email"
-            html_message = render_to_string('pages/registration/emails/email_verification.html', {
+            html_message = render_to_string('emails/email_verification.html', {
                 'user': user,
                 'verification_link': verification_link
             })
